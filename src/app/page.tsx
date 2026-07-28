@@ -9,6 +9,7 @@ export default function Home() {
         src="/assets/backgrounds/Mandragora bg.png"
         alt=""
         fill
+        loading="eager"
         className="object-cover -z-10"
       />
       <div className="absolute top-[58%] -left-2 -right-2 flex flex-col items-center justify-center gap-2 bg-leaf shadow-lg shadow-black/40 p-lg">
