@@ -11,9 +11,9 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { LoginFields, loginSchema } from "@/lib/validations/login";
-import { Button } from "@/components/ui/button";
 import GoogleButton from "@/components/auth/google-button";
 import PasswordInput from "@/components/ui/password-input";
+import LoadingButton from "@/components/ui/loading-button";
 
 export default function LoginForm() {
   const {
@@ -29,7 +29,8 @@ export default function LoginForm() {
     },
   });
 
-  function onSubmit() {
+  async function onSubmit() {
+    await new Promise((resolve) => setTimeout(resolve, 4000));
     alert("Submit!!");
   }
 
@@ -65,7 +66,13 @@ export default function LoginForm() {
           </FieldText>
         </Field>
         <Field>
-          <Button variant="leaf">Continuar</Button>
+          <LoadingButton
+            loading={isSubmitting}
+            disabled={!isValid && isSubmitted}
+            variant="leaf"
+          >
+            Continuar
+          </LoadingButton>
           <FieldText>
             No tienes una cuenta?{" "}
             <FieldLink href="/signup">Registrarse</FieldLink>

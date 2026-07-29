@@ -16,7 +16,7 @@ export default function Home() {
         <h1 className="font-heading text-5xl">Mandragora</h1>
         <p className="font-bold">Cuida tus plantas</p>
       </div>
-      <Button asChild variant="secondary">
+      <Button asChild variant="secondary" className="shadow-lg shadow-black/40">
         <Link href="/home">ENTRAR</Link>
       </Button>
     </main>

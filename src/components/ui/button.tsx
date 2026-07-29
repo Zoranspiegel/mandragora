@@ -9,6 +9,7 @@ interface ButtonProps extends React.ComponentProps<"button"> {
 export function Button({
   variant = "default",
   asChild = false,
+  disabled,
   className,
   children,
   ...props
@@ -17,6 +18,7 @@ export function Button({
 
   return (
     <Comp
+      disabled={disabled}
       className={cn(
         "h-button flex items-center justify-center gap-1 rounded-2xl text-xl font-bold cursor-pointer",
         variant === "default" && "w-full bg-primary text-primary-foreground",
@@ -25,6 +27,7 @@ export function Button({
         variant === "leaf" && "w-full bg-leaf text-foreground",
         variant === "outlined" && "w-full border-2 border-primary text-primary",
         variant === "icon" && "w-button h-button text-primary",
+        disabled && "cursor-default opacity-70",
         className,
       )}
       {...props}
