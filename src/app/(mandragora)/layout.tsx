@@ -8,5 +8,5 @@ export default async function MandragoraLayout({
 
   // if (!session) redirect("/login");
 
-  return <div>{children}</div>;
+  return <div className="p-lg">{children}</div>;
 }

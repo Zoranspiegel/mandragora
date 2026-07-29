@@ -1,7 +1,7 @@
 export default function SignupPage() {
   return (
-    <div>
+    <main className="p-lg">
       <h1>SignupPage</h1>
-    </div>
+    </main>
   );
-};
+}

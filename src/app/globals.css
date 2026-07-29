@@ -52,6 +52,11 @@
   --radius-4xl: calc(var(--radius) * 2.6);
   --padding-lg: 30px;
   --padding-md: 20px;
+  --gap-md: 20px;
+  --height-input: 52px;
+  --height-button: 52px;
+  --width-button: 52px;
+  --padding-button: 52px;
 }
 
 :root {
@@ -70,13 +75,13 @@
   --secondary: #362706;
   --secondary-foreground: #e9e5d6;
   --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
+  --muted-foreground: #36270670;
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --ring: #acb992;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
