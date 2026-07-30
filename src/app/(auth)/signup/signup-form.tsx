@@ -1,7 +1,6 @@
 "use client";
 
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import GoogleButton from "@/components/auth/google-button";
 import {
   Field,
   FieldError,
@@ -10,39 +9,51 @@ import {
   FieldText,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { LoginFields, loginSchema } from "@/lib/validations/login";
-import GoogleButton from "@/components/auth/google-button";
-import PasswordInput from "@/components/ui/password-input";
 import LoadingButton from "@/components/ui/loading-button";
+import PasswordInput from "@/components/ui/password-input";
+import { SignupFields, signupSchema } from "@/lib/validations/signup";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 
-export default function LoginForm() {
+export default function SignupForm() {
   const {
     register,
     handleSubmit,
     setError,
     formState: { errors, isValid, isSubmitted, isSubmitting },
-  } = useForm<LoginFields>({
-    resolver: zodResolver(loginSchema),
+  } = useForm<SignupFields>({
+    resolver: zodResolver(signupSchema),
     defaultValues: {
+      name: "",
       email: "",
       password: "",
+      passwordConfirmation: "",
     },
   });
 
   async function onSubmit() {
     await new Promise((resolve) => setTimeout(resolve, 4000));
-    alert("Submit!!");
+    alert("Signed Up");
   }
 
   return (
-    <form noValidate className="w-full" onSubmit={handleSubmit(onSubmit)}>
+    <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
       <FieldGroup>
         <Field>
           <Input
-            id="login-email"
+            id="signup-name"
+            type="text"
+            placeholder="Nombre"
+            {...register("name")}
+          />
+          {errors.name && <FieldError>{errors.name.message}</FieldError>}
+        </Field>
+
+        <Field>
+          <Input
+            id="signup-email"
             type="email"
             placeholder="Email"
-            aria-invalid={!!errors.email}
             {...register("email")}
           />
           {errors.email && <FieldError>{errors.email.message}</FieldError>}
@@ -50,32 +61,36 @@ export default function LoginForm() {
 
         <Field>
           <PasswordInput
-            id="login-password"
+            id="signup-password"
             placeholder="Contraseña"
-            aria-invalid={!!errors.password}
             {...register("password")}
           />
           {errors.password && (
             <FieldError>{errors.password.message}</FieldError>
           )}
-          <FieldText>
-            <FieldLink href="/forgot-password">
-              Olvidaste tu contraseña?
-            </FieldLink>
-          </FieldText>
+        </Field>
+
+        <Field>
+          <PasswordInput
+            id="signup-confirm-password"
+            placeholder="Confirmar contraseña"
+            {...register("passwordConfirmation")}
+          />
+          {errors.passwordConfirmation && (
+            <FieldError>{errors.passwordConfirmation.message}</FieldError>
+          )}
         </Field>
         
         <Field>
           <LoadingButton
-            loading={isSubmitting}
-            disabled={!isValid && isSubmitted}
             variant="leaf"
+            disabled={!isValid && isSubmitted}
+            loading={isSubmitting}
           >
             Continuar
           </LoadingButton>
           <FieldText>
-            ¿No tienes una cuenta?{" "}
-            <FieldLink href="/signup">Registrarse</FieldLink>
+            ¿Ya tienes una cuenta? <FieldLink href="/login">Ingresar</FieldLink>
           </FieldText>
         </Field>
 
