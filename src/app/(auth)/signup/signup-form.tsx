@@ -33,7 +33,7 @@ export default function SignupForm() {
 
   async function onSubmit() {
     await new Promise((resolve) => setTimeout(resolve, 4000));
-    alert("Signed Up");
+    setError("root", { message: "Signed Up but Oopsss" });
   }
 
   return (
@@ -80,7 +80,7 @@ export default function SignupForm() {
             <FieldError>{errors.passwordConfirmation.message}</FieldError>
           )}
         </Field>
-        
+
         <Field>
           <LoadingButton
             variant="leaf"
@@ -89,10 +89,15 @@ export default function SignupForm() {
           >
             Continuar
           </LoadingButton>
+
           <FieldText>
             ¿Ya tienes una cuenta? <FieldLink href="/login">Ingresar</FieldLink>
           </FieldText>
         </Field>
+
+        {errors.root && (
+          <FieldError className="text-center">{errors.root.message}</FieldError>
+        )}
 
         <div className="h-0.75 w-full flex items-center justify-center border bg-muted-foreground opacity-60">
           <div className="bg-background px-1">o</div>

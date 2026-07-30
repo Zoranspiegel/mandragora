@@ -31,7 +31,7 @@ export default function LoginForm() {
 
   async function onSubmit() {
     await new Promise((resolve) => setTimeout(resolve, 4000));
-    alert("Submit!!");
+    setError("root", { message: "Logged in but ooopsss" });
   }
 
   return (
@@ -64,7 +64,7 @@ export default function LoginForm() {
             </FieldLink>
           </FieldText>
         </Field>
-        
+
         <Field>
           <LoadingButton
             loading={isSubmitting}
@@ -73,11 +73,16 @@ export default function LoginForm() {
           >
             Continuar
           </LoadingButton>
+
           <FieldText>
             ¿No tienes una cuenta?{" "}
             <FieldLink href="/signup">Registrarse</FieldLink>
           </FieldText>
         </Field>
+
+        {errors.root && (
+          <FieldError className="text-center">{errors.root.message}</FieldError>
+        )}
 
         <div className="h-0.75 w-full flex items-center justify-center border bg-muted-foreground opacity-60">
           <div className="bg-background px-1">o</div>
