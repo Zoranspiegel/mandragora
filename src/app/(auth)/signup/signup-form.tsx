@@ -11,11 +11,14 @@ import {
 import { Input } from "@/components/ui/input";
 import LoadingButton from "@/components/ui/loading-button";
 import PasswordInput from "@/components/ui/password-input";
+import { authClient } from "@/lib/auth-client";
 import { SignupFields, signupSchema } from "@/lib/validations/signup";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
 export default function SignupForm() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -31,9 +34,21 @@ export default function SignupForm() {
     },
   });
 
-  async function onSubmit() {
-    await new Promise((resolve) => setTimeout(resolve, 4000));
-    setError("root", { message: "Signed Up but Oopsss" });
+  async function onSubmit({ name, email, password }: SignupFields) {
+    const { error } = await authClient.signUp.email({
+      name,
+      email,
+      password,
+    });
+
+    if (error) {
+      setError("root", {
+        message:
+          error.message || "Algo salió mal, por favor inténtalo de nuevo",
+      });
+    } else {
+      router.push("/home");
+    }
   }
 
   return (

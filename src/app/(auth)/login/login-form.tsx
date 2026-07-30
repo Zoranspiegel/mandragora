@@ -14,8 +14,11 @@ import { LoginFields, loginSchema } from "@/lib/validations/login";
 import GoogleButton from "@/components/auth/google-button";
 import PasswordInput from "@/components/ui/password-input";
 import LoadingButton from "@/components/ui/loading-button";
+import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -29,9 +32,26 @@ export default function LoginForm() {
     },
   });
 
-  async function onSubmit() {
-    await new Promise((resolve) => setTimeout(resolve, 4000));
-    setError("root", { message: "Logged in but ooopsss" });
+  async function onSubmit({ email, password }: LoginFields) {
+    const { error } = await authClient.signIn.email({
+      email,
+      password,
+    });
+
+    if (error) {
+      if (error.code === "INVALID_EMAIL_OR_PASSWORD") {
+        setError("root", {
+          message: "Email o contraseña inválidos",
+        });
+      } else {
+        setError("root", {
+          message:
+            error.message || "Algo salió mal, por favor inténtalo de nuevo",
+        });
+      }
+    } else {
+      router.push("/home");
+    }
   }
 
   return (
