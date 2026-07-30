@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Input } from "./input";
 import { Button } from "./button";
 import { EyeIcon, EyeClosedIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export default function PasswordInput({
   className,
@@ -21,7 +22,7 @@ export default function PasswordInput({
       <Button
         type="button"
         variant="icon"
-        className="absolute top-0 right-0 text-leaf"
+        className={cn("absolute top-0 right-0 text-leaf", className)}
         onClick={() => setShowPassword(!showPassword)}
       >
         {showPassword ? <EyeClosedIcon size={20} /> : <EyeIcon size={20} />}
