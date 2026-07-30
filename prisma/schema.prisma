@@ -14,6 +14,11 @@ enum UserRole {
   USER
 }
 
+enum LocationType {
+  INTERIOR
+  EXTERIOR
+}
+
 model User {
   id            String    @id
   name          String
@@ -97,8 +102,8 @@ model Plant {
   fertilization      Int
   fertilizations     DateTime[] @default([])
   next_fertilization DateTime?
-  location_type      String?
-  location_place     String?
+  location_type      LocationType
+  location_place     String
   under_rain         Boolean    @default(false)
 
   user  User   @relation(fields: [user_id], references: [id], onDelete: Cascade)
