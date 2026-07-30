@@ -101,8 +101,9 @@ model Plant {
   location_place     String?
   under_rain         Boolean    @default(false)
 
-  user User  @relation(fields: [user_id], references: [id], onDelete: Cascade)
-  tags Tag[]
+  user  User   @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  tags  Tag[]
+  notes Note[]
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
@@ -122,4 +123,16 @@ model Tag {
   updated_at DateTime @updatedAt
 
   @@index([user_id])
+}
+
+model Note {
+  id       String @id @default(cuid())
+  plant_id String
+  content  String
+  plant    Plant  @relation(fields: [plant_id], references: [id], onDelete: Cascade)
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@index([plant_id])
 }
