@@ -1,5 +1,6 @@
 import { getServerSession } from "@/lib/get-server-session";
 import { redirect } from "next/navigation";
+import MandragoraNavbar from "./mandragora-navbar";
 
 export default async function MandragoraLayout({
   children,
@@ -8,5 +9,10 @@ export default async function MandragoraLayout({
 
   if (!session) redirect("/login");
 
-  return <div className="p-lg">{children}</div>;
+  return (
+    <div className="flex flex-1 flex-col justify-between">
+      {children}
+      <MandragoraNavbar />
+    </div>
+  );
 }
