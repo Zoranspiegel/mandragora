@@ -12,13 +12,14 @@ export default function NavbarLink({
 }: React.ComponentProps<typeof Link>) {
   const pathname = usePathname();
   const [today] = useState(dateFormater(new Date().getTime()));
+  const modHref = href === "/calendar" ? `${href}/${today}` : href;
 
   return (
     <Link
-      href={href === "/calendar" ? `${href}/${today}` : href}
+      href={modHref}
       className={cn(
         "h-navlink flex items-center gap-1 font-bold [&>span]:hidden",
-        pathname === href &&
+        pathname === modHref &&
           "rounded-lg bg-background px-2 text-primary [&>span]:block",
       )}
     >
