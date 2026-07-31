@@ -1,3 +1,4 @@
+import PlantsCards from "@/components/plants-cards";
 import { getServerSession } from "@/lib/get-server-session";
 
 export default async function HomePage() {
@@ -9,6 +10,7 @@ export default async function HomePage() {
   return (
     <div>
       <h1>Bienvenid@ {user.name}</h1>
+      <PlantsCards />
     </div>
   );
 }
