@@ -1,6 +1,7 @@
 import { getServerSession } from "@/lib/get-server-session";
 import { redirect } from "next/navigation";
 import MandragoraNavbar from "./mandragora-navbar";
+import MandragoraMenubar from "./mandragora-menubar";
 
 export default async function MandragoraLayout({
   children,
@@ -11,7 +12,10 @@ export default async function MandragoraLayout({
 
   return (
     <div className="flex flex-1 flex-col justify-between">
-      {children}
+      <MandragoraMenubar />
+      <main className="relative flex flex-1 flex-col p-lg pt-0">
+        {children}
+      </main>
       <MandragoraNavbar />
     </div>
   );
