@@ -5,9 +5,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(request: NextRequest): Promise<NextResponse> {
   try {
     const { headers } = request;
-    const session = await auth.api.getSession({
-      headers,
-    });
+    const session = await auth.api.getSession({ headers });
 
     if (!session) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
