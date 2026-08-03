@@ -143,7 +143,7 @@ async function main() {
       user_id: USER_ID,
       name: "Cerimán",
       scientific: "Monstera Deliciosa",
-      img: "https://res.cloudinary.com/dkc8xrlg8/image/upload/v1762431573/Mandragora/Images/17624313917505268055137494004625.jpg",
+      img: "https://res.cloudinary.com/dkc8xrlg8/image/upload/v1762432054/Mandragora/Images/17624317630233728131550639939718.jpg",
       img_width: 450,
       img_height: 600,
       location_place: "Balcón",
