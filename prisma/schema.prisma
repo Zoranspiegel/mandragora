@@ -98,7 +98,7 @@ model Plant {
   img_height         Int
   watering           Int
   waterings          DateTime[] @default([])
-  next_watering      DateTime?
+  next_watering      DateTime
   fertilization      Int
   fertilizations     DateTime[] @default([])
   next_fertilization DateTime?
