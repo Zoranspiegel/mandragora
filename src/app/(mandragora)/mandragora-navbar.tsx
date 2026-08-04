@@ -1,7 +1,8 @@
-import { BiSolidHomeHeart, BiSolidCalendar } from "react-icons/bi";
+import { BiSolidHomeHeart } from "react-icons/bi";
 import { ImLeaf } from "react-icons/im";
 import { AiOutlinePlus } from "react-icons/ai";
 import NavbarLink from "@/components/ui/navbar-link";
+import NavbarCalendarLink from "@/components/navbar-calendar-link";
 
 export default function MandragoraNavbar() {
   return (
@@ -18,10 +19,7 @@ export default function MandragoraNavbar() {
         <ImLeaf fontSize={"30px"} />
         <span>Mis plantas</span>
       </NavbarLink>
-      <NavbarLink href="/calendar">
-        <BiSolidCalendar fontSize={"35px"} />
-        <span>Calendario</span>
-      </NavbarLink>
+      <NavbarCalendarLink />
     </nav>
   );
 }
