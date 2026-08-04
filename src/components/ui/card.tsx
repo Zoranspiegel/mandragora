@@ -10,7 +10,7 @@ function Card({
     <div
       data-size={size}
       className={cn(
-        "relative max-w-sm w-full flex flex-col rounded-4xl bg-card p-4 shadow-md data-[size=sm]:w-44 data-[size=sm]:aspect-1/1.45",
+        "relative w-full flex flex-col rounded-4xl bg-card p-4 shadow-md data-[size=sm]:w-44 data-[size=sm]:aspect-1/1.45",
       )}
       {...props}
     >

@@ -1,6 +1,6 @@
 import { Prisma } from "../generated/prisma/client";
 
-type WarningPlantNeed = "regar" | "fertilizar";
+export type WarningPlantNeed = "regar" | "fertilizar";
 
 export interface WarningPlant extends Prisma.PlantGetPayload<{
   select: {
