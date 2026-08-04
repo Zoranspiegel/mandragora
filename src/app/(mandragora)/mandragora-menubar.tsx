@@ -10,7 +10,7 @@ export default function MandragoraMenubar() {
   return (
     <div
       className={cn(
-        "h-nav flex flex-row-reverse items-center justify-between p-lg text-3xl text-primary",
+        "h-full flex flex-row-reverse items-center justify-between p-lg text-3xl text-primary",
         pathname === "/home" && "bg-primary text-primary-foreground",
       )}
     >

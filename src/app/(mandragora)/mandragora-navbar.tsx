@@ -5,7 +5,7 @@ import NavbarLink from "@/components/ui/navbar-link";
 
 export default function MandragoraNavbar() {
   return (
-    <nav className="h-nav flex items-center justify-between bg-primary px-lg text-background">
+    <nav className="h-full flex items-center justify-between bg-primary px-lg text-background">
       <NavbarLink href="/home">
         <BiSolidHomeHeart fontSize={"35px"} />
         <span>Home</span>

@@ -44,7 +44,7 @@ export default function RootLayout({
       )}
     >
       <body>
-        <div className="min-h-full flex flex-col sm:overflow-hidden sm:w-md sm:min-h-[90dvh] sm:my-[5dvh] sm:m-auto sm:border-foreground sm:border-4 sm:border-double sm:rounded-2xl sm:shadow-lg">
+        <div className="h-dvh flex flex-col sm:overflow-hidden sm:w-md sm:h-[90dvh] sm:my-[5dvh] sm:m-auto sm:border-foreground sm:border-4 sm:border-double sm:rounded-2xl sm:shadow-lg">
           {children}
         </div>
       </body>

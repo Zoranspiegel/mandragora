@@ -52,11 +52,11 @@
   --radius-4xl: calc(var(--radius) * 2.6);
   --padding-lg: 30px;
   --padding-md: 20px;
-  --gap-md: 20px;
-  --height-nav: 75px;
+  --gap-md: 20px;  
   --height-navlink: 42px;
   --height-input: 52px;
   --height-button: 52px;
+  --height-warning-item: 70px;
   --width-button: 52px;
   --padding-button: 52px;
 }

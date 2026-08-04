@@ -11,9 +11,9 @@ export default async function MandragoraLayout({
   if (!session) redirect("/login");
 
   return (
-    <div className="flex flex-1 flex-col justify-between">
+    <div className="h-full grid grid-rows-[75px_1fr_75px]">
       <MandragoraMenubar />
-      <main className="relative flex flex-1 flex-col p-lg pt-0">
+      <main className="h-full relative flex flex-col p-lg pt-0 overflow-y-scroll scrollbar-none">
         {children}
       </main>
       <MandragoraNavbar />
