@@ -13,3 +13,10 @@ export interface WarningPlant extends Prisma.PlantGetPayload<{
   urgency: Date;
   needs: WarningPlantNeed[];
 }
+
+export type PlantDetails = Prisma.PlantGetPayload<{
+  include: {
+    tags: true;
+    notes: true;
+  };
+}>;
