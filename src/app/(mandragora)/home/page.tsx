@@ -1,6 +1,7 @@
 import PlantsCards from "@/components/plants-cards";
 import WarningPlants from "@/components/warning-plants";
 import { getServerSession } from "@/lib/get-server-session";
+import Link from "next/link";
 
 export default async function HomePage() {
   const session = await getServerSession();
@@ -10,13 +11,24 @@ export default async function HomePage() {
 
   return (
     <div className="flex flex-col gap-4">
-      <h1 className="text-2xl text-primary-foreground font-bold">
+      <h1 className="text-4xl text-primary-foreground font-heading">
         Hola, {user.name}
       </h1>
 
       <WarningPlants />
 
-      <PlantsCards />
+      <div className="flex flex-col gap-2">
+        <div className="flex items-end justify-between">
+          <h2 className="text-xl font-bold">Tus plantas</h2>
+          <Link
+            href="/plants"
+            className="text-sm text-muted-foreground font-bold"
+          >
+            Ver todas
+          </Link>
+        </div>
+        <PlantsCards />
+      </div>
 
       <svg
         viewBox="0 0 20 20"
