@@ -8,7 +8,7 @@ import {
   CardTitle,
   CardAction,
 } from "@/components/ui/card";
-import { usePlantDetails } from "@/hooks/usePlantDetails";
+import { usePlantDetails } from "@/hooks/swr/usePlantDetails";
 import Image from "next/image";
 import { GiPowderBag } from "react-icons/gi";
 import { BsDropletFill } from "react-icons/bs";
