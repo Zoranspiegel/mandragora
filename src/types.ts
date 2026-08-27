@@ -20,3 +20,26 @@ export type PlantDetails = Prisma.PlantGetPayload<{
     notes: true;
   };
 }>;
+
+export interface CalendarPlant extends Prisma.PlantGetPayload<{
+  select: {
+    id: true;
+    name: true;
+    scientific: true;
+    img: true;
+  };
+}> {
+  next_fertilization?: Date;
+  next_watering?: Date;
+}
+
+export interface CalendarTile {
+  month: number;
+  day: number;
+  outline: "inside" | "outside" | "today";
+  events: {
+    water: boolean;
+    fertilize: boolean;
+    plants: CalendarPlant[];
+  };
+}
