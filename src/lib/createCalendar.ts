@@ -1,8 +1,6 @@
-import type { CalendarTile } from "@/types";
+import type { Calendar, CalendarTile } from "@/types";
 
-export function createCalendar(year: number, month: number) {
-  
-
+export function createCalendar(year: number, month: number): Calendar {
   const today = new Date();
   const lastDayPrevMonth = new Date(year, month, 0).getDate();
   const lastDayCurrMonth = new Date(year, month + 1, 0).getDate();

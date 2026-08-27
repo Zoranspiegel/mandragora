@@ -124,7 +124,7 @@ export async function GET(
       }
     }
 
-    return NextResponse.json({ data: "UNDER_DEV", calendar }, { status: 200 });
+    return NextResponse.json(calendar, { status: 200 });
   } catch (error) {
     if (error instanceof Error) {
       return NextResponse.json({ error: error.message }, { status: 500 });

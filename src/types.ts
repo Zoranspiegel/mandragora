@@ -43,3 +43,12 @@ export interface CalendarTile {
     plants: CalendarPlant[];
   };
 }
+
+type WeekDay = "Lun" | "Mar" | "Mie" | "Jue" | "Vie" | "Sab" | "Dom";
+
+export interface Calendar {
+  year: number;
+  month: string;
+  weekDays: WeekDay[];
+  calendar: CalendarTile[][]
+}

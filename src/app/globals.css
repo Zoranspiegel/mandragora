@@ -59,6 +59,19 @@
   --height-warning-item: 70px;
   --width-button: 52px;
   --padding-button: 52px;
+  --animate-shake: shake 800ms infinite;
+
+  @keyframes shake {
+  0% {
+    transform: rotate(-15deg);
+  }
+  50% {
+    transform: rotate(15deg);
+  }
+  100% {
+    transform: rotate(-15deg);
+  }
+}
 }
 
 :root {

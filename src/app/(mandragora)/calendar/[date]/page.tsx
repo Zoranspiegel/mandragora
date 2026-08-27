@@ -10,8 +10,8 @@ export default async function CalendarPage({
   console.log(date);
 
   return (
-    <div className="flex flex-col gap-4">
-      <h1 className="text-4xl font-heading">CalendarPage</h1>
+    <div className="flex flex-col">
+      <h1 className="text-4xl font-heading">Calendario</h1>
       <Calendar date={date} />
     </div>
   );
