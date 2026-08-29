@@ -2,7 +2,6 @@
 
 import { useCalendar } from "@/hooks/swr/useCalendar";
 import CalendarTile from "./calendar-tile";
-import { ModalContextProvider } from "@/contexts/modal-context";
 
 export default function Calendar({ date }: { date: string }) {
   const { calendar, error, isLoading } = useCalendar(date);
@@ -30,9 +29,7 @@ export default function Calendar({ date }: { date: string }) {
           {calendar.calendar.map((row, i) => (
             <div key={i} className="flex justify-between gap-3">
               {row.map((tile, j) => (
-                <ModalContextProvider key={j + tile.day}>
-                  <CalendarTile tile={tile} date={date} />
-                </ModalContextProvider>
+                <CalendarTile key={j + tile.day} tile={tile} date={date} />
               ))}
             </div>
           ))}
