@@ -14,8 +14,11 @@ import { GiPowderBag } from "react-icons/gi";
 import { BsDropletFill } from "react-icons/bs";
 import { PiPottedPlantFill, PiPencilLight } from "react-icons/pi";
 import PlantTags from "@/components/plant-tags";
+import { useState } from "react";
+import PlantImage from "./plant-image";
 
 export default function PlantDetails({ plant_id }: { plant_id: string }) {
+  const [imageVisibility, setImageVisibility] = useState(false);
   const { plant, error, isLoading } = usePlantDetails(plant_id);
 
   if (isLoading) return <div>LOADING...</div>;
@@ -33,7 +36,7 @@ export default function PlantDetails({ plant_id }: { plant_id: string }) {
     : "N/A";
 
   return (
-    <div className="flex flex-col gap-4 pt-40">
+    <div className="flex flex-col gap-4 pt-60">
       <div className="absolute top-0 left-0 right-0 h-[38dvh] -z-10">
         <Image
           src={plant.img}
@@ -93,6 +96,19 @@ export default function PlantDetails({ plant_id }: { plant_id: string }) {
           </ul>
         </CardContent>
       </Card>
+
+      {imageVisibility && (
+        <PlantImage
+          src={plant.img}
+          alt={plant.scientific || plant.name}
+          onClose={() => setImageVisibility(false)}
+        />
+      )}
+
+      <div
+        className="absolute top-0 left-0 right-0 h-60 cursor-pointer"
+        onClick={() => setImageVisibility(true)}
+      />
     </div>
   );
 }
