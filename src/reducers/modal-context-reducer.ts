@@ -43,6 +43,13 @@ export function modalContextReducer(
         modalTitle: "Eventos",
       };
 
+    case "CARING_SUCCESS":
+      return {
+        ...state,
+        modalType: "caring_success",
+        modalTitle: ""
+      };
+
     case "CLOSE":
       return {
         ...initialState,

@@ -9,6 +9,7 @@ import {
 } from "@/reducers/modal-context-reducer";
 import { createContext, useContext, useReducer } from "react";
 import CaringPlant from "@/components/caring-plant";
+import CaringSuccess from "@/components/caring-success";
 
 const ModalContext = createContext<ModalContextValue | null>(null);
 
@@ -31,7 +32,10 @@ export function ModalContextProvider({
           <PlantsEvents tile={state.calendarTile} />
         )}
         {state.modalType === "confirm_watering" && <CaringPlant need="water" />}
-        {state.modalType === "confirm_fertilization" && <CaringPlant need="fertilization" />}
+        {state.modalType === "confirm_fertilization" && (
+          <CaringPlant need="fertilization" />
+        )}
+        {state.modalType === "caring_success" && <CaringSuccess />}
       </Dialog>
     </ModalContext.Provider>
   );

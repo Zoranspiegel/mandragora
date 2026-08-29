@@ -61,6 +61,7 @@ export type ModalT =
   | "confirm_watering"
   | "confirm_fertilization"
   | "events"
+  | "caring_success"
   | null;
 
 export type ModalTitle = "Eventos" | "Riego" | "Fertilización" | "";
@@ -77,6 +78,7 @@ export type ModalContextAction =
   | { type: "CONFIRM_FERTILIZATION"; payload: string }
   | { type: "EVENTS"; payload: CalendarTile }
   | { type: "BACK_TO_EVENTS" }
+  | { type: "CARING_SUCCESS" }
   | { type: "CLOSE" };
 
 export interface ModalContextValue {
