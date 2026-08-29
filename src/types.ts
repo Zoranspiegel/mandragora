@@ -50,5 +50,36 @@ export interface Calendar {
   year: number;
   month: string;
   weekDays: WeekDay[];
-  calendar: CalendarTile[][]
+  calendar: CalendarTile[][];
+}
+
+export type PlantNeed = 
+| "water"
+| "fertilization"
+
+export type ModalT =
+  | "confirm_watering"
+  | "confirm_fertilization"
+  | "events"
+  | null;
+
+export type ModalTitle = "Eventos" | "Riego" | "Fertilización" | "";
+
+export interface ModalContextState {
+  modalType: ModalT;
+  modalTitle: ModalTitle;
+  calendarTile: CalendarTile | null;
+  plantId: string | null;
+}
+
+export type ModalContextAction =
+  | { type: "CONFIRM_WATERING"; payload: string }
+  | { type: "CONFIRM_FERTILIZATION"; payload: string }
+  | { type: "EVENTS"; payload: CalendarTile }
+  | { type: "BACK_TO_EVENTS" }
+  | { type: "CLOSE" };
+
+export interface ModalContextValue {
+  state: ModalContextState;
+  dispatch: React.Dispatch<ModalContextAction>;
 }
