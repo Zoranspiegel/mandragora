@@ -97,9 +97,13 @@ export async function GET(
 
       for (const row of calendar.calendar) {
         for (const tile of row) {
-          if (tile.outline === "inside" && eventsMonth === month - 1) {
+          if (
+            (tile.outline === "inside" || tile.outline === "today") &&
+            eventsMonth === month - 1
+          ) {
             eventsMonth += 1;
           }
+
           if (tile.outline === "outside" && eventsMonth === month) {
             eventsMonth += 1;
           }
