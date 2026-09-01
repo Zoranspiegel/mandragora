@@ -22,6 +22,18 @@ function Field({ children, className, ...props }: React.ComponentProps<"div">) {
   );
 }
 
+function FieldHorizontal({
+  children,
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
+  return (
+    <div className={cn("flex gap-4 items-center", className)} {...props}>
+      {children}
+    </div>
+  );
+}
+
 function FieldError({
   className,
   children,
@@ -65,7 +77,7 @@ function FieldError({
     <div
       role="alert"
       data-slot="field-error"
-      className={cn("ml-2 text-md font-bold text-destructive", className)}
+      className={cn("ml-2 text-md font-bold text-destructive/70", className)}
       {...props}
     >
       {content}
@@ -76,10 +88,18 @@ function FieldError({
 function FieldText({
   children,
   className,
+  size = "md",
   ...props
-}: React.ComponentProps<"div">) {
+}: React.ComponentProps<"div"> & { size?: "md" | "lg" }) {
   return (
-    <div className={cn("ml-2", className)} {...props}>
+    <div
+      className={cn(
+        "ml-2 flex items-center gap-2 whitespace-nowrap",
+        size === "lg" && "text-lg",
+        className,
+      )}
+      {...props}
+    >
       {children}
     </div>
   );
@@ -98,4 +118,4 @@ function FieldLink({
   );
 }
 
-export { FieldGroup, Field, FieldError, FieldText, FieldLink };
+export { FieldGroup, Field, FieldError, FieldText, FieldLink, FieldHorizontal };
