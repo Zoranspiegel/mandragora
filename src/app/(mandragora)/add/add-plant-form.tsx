@@ -42,23 +42,23 @@ const formInitialState: CreatePlant = {
   },
 };
 
-const formInitialStateM: CreatePlant = {
-  name: "Planta",
-  scientific: "Plantus",
-  location_place: "Balcón",
-  location_type: "INTERIOR",
-  under_rain: false,
-  watering: 3,
-  waterings: [new Date().toISOString()],
-  need_fertilizer: false,
-  fertilization: 0,
-  fertilizations: [],
-  tags: [],
-  imageFile: {
-    file: "",
-    name: "",
-  },
-};
+// const formInitialStateM: CreatePlant = {
+//   name: "Planta",
+//   scientific: "Plantus",
+//   location_place: "Balcón",
+//   location_type: "INTERIOR",
+//   under_rain: false,
+//   watering: 3,
+//   waterings: [new Date().toISOString()],
+//   need_fertilizer: false,
+//   fertilization: 0,
+//   fertilizations: [],
+//   tags: [],
+//   imageFile: {
+//     file: "",
+//     name: "",
+//   },
+// };
 
 export default function AddPlantForm() {
   const {
@@ -70,7 +70,7 @@ export default function AddPlantForm() {
     setError,
     formState: { errors, isValid, isSubmitting, isSubmitted },
   } = useForm<CreatePlant>({
-    defaultValues: formInitialStateM,
+    defaultValues: formInitialState,
     resolver: zodResolver(plantInputSchema),
   });
   const plant_name = useWatch({ control, name: "name" });
