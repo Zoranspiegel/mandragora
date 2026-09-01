@@ -28,6 +28,16 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       where: {
         user_id,
       },
+      select: {
+        id: true,
+        name: true,
+        scientific: true,
+        img: true,
+        updated_at: true,
+      },
+      orderBy: {
+        updated_at: "desc",
+      },
     });
 
     return NextResponse.json(plants, { status: 200 });
