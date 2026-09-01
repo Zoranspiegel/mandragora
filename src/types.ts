@@ -53,9 +53,7 @@ export interface Calendar {
   calendar: CalendarTile[][];
 }
 
-export type PlantNeed = 
-| "water"
-| "fertilization"
+export type PlantNeed = "water" | "fertilization";
 
 export type ModalT =
   | "confirm_watering"
@@ -84,4 +82,10 @@ export type ModalContextAction =
 export interface ModalContextValue {
   state: ModalContextState;
   dispatch: React.Dispatch<ModalContextAction>;
+}
+
+export interface NewImage {
+  img: string;
+  img_width: number;
+  img_height: number;
 }

@@ -7,8 +7,6 @@ export default async function CalendarPage({
 }) {
   const { date } = await params;
 
-  console.log(date);
-
   return (
     <div className="flex flex-col">
       <h1 className="text-4xl font-heading">Calendario</h1>

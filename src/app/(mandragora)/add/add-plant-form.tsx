@@ -22,6 +22,7 @@ import { Controller, useForm, useWatch } from "react-hook-form";
 import imgCompression from "browser-image-compression";
 import { Camera } from "lucide-react";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 
 const formInitialState: CreatePlant = {
   name: "",
@@ -66,19 +67,38 @@ export default function AddPlantForm() {
     control,
     setValue,
     trigger,
+    setError,
     formState: { errors, isValid, isSubmitting, isSubmitted },
   } = useForm<CreatePlant>({
     defaultValues: formInitialStateM,
     resolver: zodResolver(plantInputSchema),
   });
-
+  const plant_name = useWatch({ control, name: "name" });
   const need_fertilizer = useWatch({ control, name: "need_fertilizer" });
   const imgFile = useWatch({ control, name: "imageFile" });
 
+  /* SUBMIT */
   async function onSubmit(data: CreatePlant) {
-    console.log(data);
+    const res = await fetch("/api/plants", {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+
+    if (res.ok) {
+      const parsedRes = await res.json();
+      const { id } = parsedRes.data;
+      redirect(`/details/${id}`);
+    } else {
+      const { path } = await res.json();
+
+      if (path === "name")
+        setError(path, {
+          message: `Otra de tus plantas ya tiene este nombre. Intenta por ejemplo: '${plant_name} 2'`,
+        });
+    }
   }
 
+  /* DATE_CHANGE */
   async function handleDateChange<
     ValuesT extends FieldValues,
     NameT extends Path<ValuesT>,
@@ -96,6 +116,7 @@ export default function AddPlantForm() {
     }
   }
 
+  /* UPLOAD_FILE */
   async function handleUploadImage(e: React.ChangeEvent<HTMLInputElement>) {
     if (!e.target.files) return;
 

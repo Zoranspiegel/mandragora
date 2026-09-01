@@ -17,6 +17,19 @@ import PlantTags from "@/components/plant-tags";
 import { useState } from "react";
 import PlantImage from "./plant-image";
 
+function lastDateFormater(dates: Date[]) {
+  if (dates.length === 0) return null;
+
+  const lastDate = new Date(dates[dates.length - 1]).toLocaleDateString("es", {
+    month: "long",
+    day: "numeric",
+  });
+
+  if (lastDate === "Invalid Date") return null;
+
+  return lastDate;
+}
+
 export default function PlantDetails({ plant_id }: { plant_id: string }) {
   const [imageVisibility, setImageVisibility] = useState(false);
   const { plant, error, isLoading } = usePlantDetails(plant_id);
@@ -25,15 +38,8 @@ export default function PlantDetails({ plant_id }: { plant_id: string }) {
 
   if (error) return <div>ERROR</div>;
 
-  const lastWatering = plant.waterings.length
-    ? new Date(plant.waterings[plant.waterings.length - 1]).toLocaleDateString(
-        "es",
-        {
-          month: "long",
-          day: "numeric",
-        },
-      )
-    : "N/A";
+  const lastWatering = lastDateFormater(plant.waterings);
+  const lastFertilization = lastDateFormater(plant.fertilizations);
 
   return (
     <div className="flex flex-col gap-4 pt-60">
@@ -57,16 +63,22 @@ export default function PlantDetails({ plant_id }: { plant_id: string }) {
         </CardHeader>
 
         <CardContent>
-          <PlantDetailsAttribute
-            type="watering"
-            period={plant.watering}
-            date={lastWatering}
-          />
-          <PlantDetailsAttribute
-            type="fertilization"
-            period={plant.fertilization}
-            date={lastWatering}
-          />
+          {lastWatering && (
+            <PlantDetailsAttribute
+              type="watering"
+              period={plant.watering}
+              date={lastWatering}
+            />
+          )}
+
+          {lastFertilization && (
+            <PlantDetailsAttribute
+              type="fertilization"
+              period={plant.fertilization}
+              date={lastFertilization}
+            />
+          )}
+
           <PlantDetailsAttribute
             type="location"
             locationType={plant.location_type}
