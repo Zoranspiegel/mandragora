@@ -24,9 +24,10 @@ export default function NavbarLink({
       {children}
       <motion.span
         className={cn(
-          "w-0 opacity-0 overflow-hidden whitespace-nowrap",
-          isActive && "opacity-100",
+          "w-0 overflow-hidden whitespace-nowrap",
+          isActive ? "opacity-100" : "opacity-0",
         )}
+        initial={false}
         animate={{ width: isActive ? "auto" : 0 }}
       >
         {text}
